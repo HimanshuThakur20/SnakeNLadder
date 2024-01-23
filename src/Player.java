@@ -7,4 +7,10 @@ public class Player {
         this.currentPosition=position;
     }
 
+    @Override
+    public String toString() {
+        return "Player 1 " +
+                "currentPosition=" + currentPosition +
+                '\n';
+    }
 }
