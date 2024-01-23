@@ -17,21 +17,21 @@ public class Main {
             } else if (i % 2 == 0) {
                 System.out.println("\nPlayer " + p1.playerName + " at play");
                 m1.play(p1, g);
-                System.out.println("Position of the player: "+ p1.currentPosition );
+                System.out.println("Position of the player: "+ p1.currentPosition +"\n");
 
             } else {
                 System.out.println("\nPlayer " + p2.playerName + " at play");
                 m1.play(p2, g);
-                System.out.println("Position of the player: "+ p2.currentPosition );
+                System.out.println("Position of the player: "+ p2.currentPosition  +"\n");
 
             }
         }
 
             if(p1.currentPosition==100){
-                System.out.println("Player 1 won!! Die count is" + p1.dieCount);
+                System.out.println("\nPlayer 1 won!! Die count is " + p1.dieCount);
             }
             else{
-                System.out.println("Player 2 Won!! Die count is" + p2.dieCount);
+                System.out.println("\nPlayer 2 Won!! Die count is " + p2.dieCount);
             }
 
 
@@ -47,24 +47,23 @@ public class Main {
         Scanner sc = new Scanner(System.in);
 
             if(p1.currentPosition==0 ){
-                System.out.println("\nPress Enter to roll the die...");
+                System.out.println("Press Enter to roll the die...");
                 sc.nextLine();
                 m1.dieRoll(p1) ;
                 if(p1.dieValue!=6) {
-                    System.out.println("\nYou need to  get a 6 to start the game. \n");
+                    System.out.println("You need to  get a 6 to start the game. \n");
                     return;
                 }
             }
             if(p1.currentPosition==0 && p1.dieValue==6){
-                System.out.println("\n\nGame started!! for player "+ p1.playerName+"\n");
+                System.out.println("\nGame started!! for player "+ p1.playerName+"\n");
                 System.out.println("Position of the player: "+ p1.currentPosition );
 
-                p1.currentPosition=0;
+                //p1.currentPosition=0;
             }
 
-                    System.out.println("\nPress Enter to roll the die...");
+                    System.out.println("Press Enter to roll the die...");
                     sc.nextLine();
-
                     m1.dieRoll(p1);
 
                     int updatePosition = p1.dieValue+p1.currentPosition;
@@ -73,6 +72,8 @@ public class Main {
                         int index = g.ladders.indexOf(updatePosition);
                         p1.currentPosition = g.ladderLength.get(index);
                         System.out.println(p1);
+                        System.out.println("Got a ladder, roll the die again");
+                        m1.play(p1,g);
 
                     } else if (g.snakes.contains(updatePosition)) {
                         int index = g.snakes.indexOf(updatePosition);
